@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Moon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle, rgba(15, 15, 45, 1) 0%, rgba(5, 5, 20, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Moon container */
+        .moon-container {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Moon design */
+        .moon {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Lovely smile */
+        .smile {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 10px;
+            background: black;
+            border-radius: 50%;
+        }
+
+        /* Dull frown */
+        .frown {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+            width: 50px;
+            height: 10px;
+            background: black;
+            border-radius: 50%;
+            display: none;
+        }
+
+        /* Moon's eyes */
+        .eyes {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .eye {
+            background: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pupil {
+            background: #000;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Nebula effect */
+        .nebula {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 80%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: nebulaGlow 3s infinite alternate ease-in-out;
+        }
+
+        /* Nebula glowing effect */
+        @keyframes nebulaGlow {
+            0% {
+                opacity: 0.4;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="moon-container">
+        <div class="moon">
+            <div class="eyes">
+                <div class="eye" id="left-eye">
+                    <div class="pupil"></div>
+                </div>
+                <div class="eye" id="right-eye">
+                    <div class="pupil"></div>
+                </div>
+            </div>
+            <div class="smile"></div>
+            <div class="frown"></div>
+        </div>
+        <div class="nebula"></div>
+    </div>
+
+    <script>
+        // Variables to store mouse position and movement
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        let movingTooMuch = false;
+
+        document.addEventListener('mousemove', (event) => {
+            const eyes = document.querySelectorAll('.eye');
+            const smile = document.querySelector('.smile');
+            const frown = document.querySelector('.frown');
+            
+            // Check if the mouse is moving too fast
+            const deltaX = Math.abs(event.clientX - lastMouseX);
+            const deltaY = Math.abs(event.clientY - lastMouseY);
+            if (deltaX > 100 || deltaY > 100) {
+                movingTooMuch = true;
+            } else {
+                movingTooMuch = false;
+            }
+
+            // Switch between smile and frown based on movement
+            if (movingTooMuch) {
+                smile.style.display = 'none';
+                frown.style.display = 'block';
+            } else {
+                smile.style.display = 'block';
+                frown.style.display = 'none';
+            }
+
+            // Update the last mouse position
+            lastMouseX = event.clientX;
+            lastMouseY = event.clientY;
+
+            // Move pupils based on mouse position
+            eyes.forEach(eye => {
+                const pupil = eye.querySelector('.pupil');
+                const eyeRect = eye.getBoundingClientRect();
+                const pupilRect = pupil.getBoundingClientRect();
+                
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+                
+                const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
+                
+                const radius = (eyeRect.width / 2) - (pupilRect.width / 2);
+                pupil.style.transform = `translate(-50%, -50%) translate(${Math.cos(angle) * radius}px, ${Math.sin(angle) * radius}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

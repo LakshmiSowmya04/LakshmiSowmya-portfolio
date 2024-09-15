@@ -1,0 +1,116 @@
+.header {
+  margin: 0 auto;
+  padding: 2em;
+  width: 80%;
+  height: 70px;
+  background: #1c1f2b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  margin: auto;
+  margin-top: 8px;
+  margin-left: 2%;
+}
+.left a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.controls .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.controls .menu-btn .icon {
+  stroke-width: 2;
+}
+
+.controls button:hover {
+  color: #f0a500;  /* Add hover effect for buttons */
+}
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.header::after, .header::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #2a57ca, #74abe6, #f7f7f7, #2404b1, #170462);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+.header::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+.header-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.left{
+  flex-direction: row;
+}
+.right{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.right li {
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  /* transition: background-color .4s ease-in-out; */
+}
+.right li a{
+color: #fafafa;
+font-size: 18px;
+text-decoration: none;
+
+}
+ .right ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: max-height .3s ease-in-out, opacity .3s ease-in-out;
+}
+ 

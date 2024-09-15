@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
+    width: 100%;
+  }
+  
+  .moon1 {
+    top: 4%;
+    right: 1%;
+    display: block;
+    width: 17rem;
+    height: 17rem;
+    position: absolute;
+    border-radius: 50%;
+    background-image: url('./image.png');
+    background-repeat: repeat-x;
+    background-size: 110% 100%;
+    opacity: 0.9;
+    animation-name: moonRotation;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards !important;
+    box-shadow: inset -10px 8px 6px -5px #ffffff, 
+                inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9), 
+                7px -6px 14px rgba(255, 255, 255, 0.32);
+    z-index:1
+  }
+  
+  @keyframes moonRotation {
+    0% {
+      background-position: 0% 0%;
+      border: 0px solid transparent;
+    }
+    50% {
+      background-position: 150% 0%;
+      border: 0px solid transparent;
+    }
+    100% {
+      background-position: 300% 0%;
+      border: 0px solid transparent;
+    }
+  }
+  
