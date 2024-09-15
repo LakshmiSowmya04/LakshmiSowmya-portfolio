@@ -1,6 +1,6 @@
 import './About.css';
 import Resume from './Resume';
-import {Github , Linkedin} from 'lucide-react';
+import {Github , Linkedin,Mail} from 'lucide-react';
 import { Rocket, Globe } from 'lucide-react';
 import {Link} from 'react-router-dom';
 import profilePicture from './3.jpeg';
@@ -32,6 +32,11 @@ export default function About(){
                             <Linkedin className='social-media-btn'></Linkedin>
                     </Link>
                     </div>
+                    <div>
+                    <Link to='https://linkedin.com/in/iamlakshmisowmya'>
+                        <Mail className="social-media-btn" />
+                    </Link>
+                    </div>
             </div>
         </div>
             <div id="home" className='about'>
@@ -53,19 +58,6 @@ export default function About(){
                 </div>
                 <Resume></Resume>
             </div>
-            {/* <div className='social-media'>
-                <div>
-                    <Link to='https://github.com/bhatganeshdarshan'>
-                        <Github className='social-media-btn'></Github>
-                    </Link>
-                </div>
-                <div>
-                    <Link to='https://linkedin.com/in/ganeshdarshan'>
-                        <Linkedin className='social-media-btn'></Linkedin>
-                    </Link>
-                </div>
-            </div> */}
-            
         </div>
     );
 }

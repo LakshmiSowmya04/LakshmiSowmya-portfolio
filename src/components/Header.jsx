@@ -1,46 +1,64 @@
-import React from 'react';
-import './Header.css'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Sun, Moon, Menu, X } from 'lucide-react'; // Assuming you're using icons from lucide-react
+import './Header.css';
 
 const Header = () => {
-    return (
-      <div className="header">
-        <div className="header-content">
-          <div className="left">
-          <a href="/">Lakhsmi Sowmya </a>
-          </div>
-          <div className="right">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          {/* <div className="controls">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-sun icon">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2"></path>
-            <path d="M12 20v2"></path>
-            <path d="m4.93 4.93 1.41 1.41"></path>
-            <path d="m17.66 17.66 1.41 1.41"></path>
-            <path d="M2 12h2"></path>
-            <path d="M20 12h2"></path>
-            <path d="m6.34 17.66-1.41 1.41"></path>
-            <path d="m19.07 4.93-1.41 1.41"></path>
-          </svg>
-        </button>
-        <button className="menu-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu icon">
-            <line x1="4" x2="20" y1="12" y2="12"></line>
-            <line x1="4" x2="20" y1="6" y2="6"></line>
-            <line x1="4" x2="20" y1="18" y2="18"></line>
-          </svg>
-        </button>
-      </div> */}
-        </div>
-      </div>
-    );
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const navItems = ['Home', 'Skills', 'Projects', 'Contact'];
+
+  // Handle scroll to add 'scrolled' class
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-mode', !darkMode);
   };
 
-export default Header
+  // Toggle the mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="header-content">
+        <div className="left">
+          <Link to="/">Lakshmi Sowmya</Link>
+        </div>
+        <div className="right">
+          <ul className={isMenuOpen ? 'nav-menu active' : 'nav-menu'}>
+            {navItems.map((item) => (
+              <li key={item}>
+                <a href={`#${item.toLowerCase()}`} onClick={toggleMenu}>
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="controls">
+          {/* <button onClick={toggleDarkMode}>
+            {darkMode ? <Sun className="icon" /> : <Moon className="icon" />}
+          </button> */}
+          <button onClick={toggleMenu} className="menu-btn">
+            {isMenuOpen ? <X className="icon" /> : <Menu className="icon" />}
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
