@@ -4,19 +4,18 @@ body {
     padding: 0;
     overflow: hidden;
     background: radial-gradient(circle, rgba(15, 15, 45, 1) 0%, rgba(5, 5, 20, 1) 100%);
-    
+   
   }
   
   /* Container for stars and meteors */
   .galaxy-container {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
-    z-index: 9999;
+    z-index: 1;
     background-color: #091631;
+    overflow-y: auto; 
+    overflow-x: hidden;
   }
   
   /* Dynamic Nebula effect */
@@ -42,6 +41,7 @@ body {
     opacity: 0.8;
     box-shadow: 0px 0px 20px rgba(226, 9, 9, 0.9);
     animation: twinkle 2s infinite ease-in-out, sizeChange 3s infinite alternate;
+    z-index: 0;
   }
   
   @keyframes twinkle {

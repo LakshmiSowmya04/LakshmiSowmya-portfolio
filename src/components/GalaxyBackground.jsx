@@ -4,6 +4,7 @@ import './Header.css'; // New CSS for the header
 import Moon from'./Moon';
 import Header from './Header';
 import About from './About';
+import Skills from './Skills';
 
 const GalaxyBackground = () => {
   const galaxyContainerRef = useRef(null);
@@ -69,6 +70,7 @@ const GalaxyBackground = () => {
       <Header />
       <Moon/>
       <About/>
+      <Skills/>
     </div>
   );
 };

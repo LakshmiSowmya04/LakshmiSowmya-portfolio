@@ -1,0 +1,17 @@
+.SkillSec{
+    position: relative;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    flex-wrap: wrap;
+}
+.card{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    
+    
+}

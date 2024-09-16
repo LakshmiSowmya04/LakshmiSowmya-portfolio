@@ -147,12 +147,13 @@ text-decoration: none;
 }
 
 
-@media (max-width : 780px) {
+@media (max-width : 500px) {
   .nav-links{
       display: block;
   }
   .moon1{
-    transform: scale(0.7);
+    transform: scale(0.6);
+    z-index:-66;
   }
 
   .nav-menu{
@@ -163,7 +164,7 @@ text-decoration: none;
       /* right:100%; */
       left : 0 ; 
       background: #1c3bb7;
-      width: vw;
+      width: x  vw;
       padding: 20px;
       border-radius: 10px;
       transition: max-height 0.3s ease-in-out , opacity 0.3s ease-in-out;

@@ -37,7 +37,7 @@
     box-shadow: inset -10px 8px 6px -5px #ffffff, 
                 inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9), 
                 7px -6px 14px rgba(255, 255, 255, 0.32);
-    z-index:1
+    z-index:1;
   }
   
   @keyframes moonRotation {
