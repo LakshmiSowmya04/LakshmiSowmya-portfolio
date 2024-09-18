@@ -16,7 +16,10 @@ const Skills = () => {
                 {name:'Java',image:''},
                 ];
     return(
-        <div className="SkillSec">
+        <div className="SkillSec" id="skills">
+            <div className='skills-header'>
+                <h1>Skills</h1>
+            </div>
             <CardBox cards={cards}/>
         </div>
     );
