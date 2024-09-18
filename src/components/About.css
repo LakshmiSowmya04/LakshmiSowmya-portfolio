@@ -134,8 +134,7 @@
     justify-content:flex-start;
     gap: 20px;
     margin-top: 20px;
-    transform: translateY(0px);
-    animation: float_light 6s ease-in-out infinite;
+    
 }
 
 .social-media div{
@@ -146,6 +145,8 @@
     border-radius:16px;
     transform: translateY(0px);
     animation: float_light 6s ease-in-out infinite;
+    transform: translateY(0px);
+    animation: float_dark 6s ease-in-out infinite;
 }
 
 @media (max-width:768px) {

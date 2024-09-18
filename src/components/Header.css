@@ -3,7 +3,7 @@
   padding: 2em;
   width: 80%;
   height: 70px;
-  background: #1c1f2b;
+  background: #31333a;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,9 +14,10 @@
   margin-top: 8px;
   margin-left: 2%;
 }
+
 .header.scrolled{
   background-color: rgba(255,255,255,0.95);
-  box-shadow: 0 4px 12px rgba(189, 209, 150, 0.1);
+  box-shadow: 0 4px 12px rgba(233, 225, 10, 0.1);
 }
 .nav-menu{
   display: flex;

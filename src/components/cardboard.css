@@ -1,0 +1,63 @@
+.Card{
+    justify-content:center;
+    align-items: center;
+    background-color:#31333A;
+    border-radius: 8px;
+    border: 2px white solid;
+    position: relative;
+    height: 170px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    color: aliceblue;
+    transition: transform 0.2s;
+    margin: 10px
+}
+
+.Card:hover {
+    transform: scale(1.2);
+    background-color: rgb(153, 193, 228);
+    opacity: 5;
+  }
+  
+  .stars {
+    color: #d81cd2;
+    font-size: 18px;
+  }
+  
+  .Card:hover .stars .starSpan {
+    font-size: 28px;
+    color: #f39c12;
+  }
+
+/* .Card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    padding:1px;
+    background: linear-gradient(90deg, red, yellow, green, cyan, blue, purple, red);
+    background-size: 400%;
+    z-index: -1;
+    border: 2px solid transparent;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: borderColorRotate 3s linear infinite;
+} */
+.Cardbox div{
+    transform: translateY(0px);
+    animation: float_dark 6s ease-in-out infinite;
+}
+.Cardbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 100px;
+    margin-top: 20px;
+}
